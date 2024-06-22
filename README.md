@@ -33,3 +33,31 @@ Adicionalmente se cuenta con directorios correspondientes a documentación, imá
 * `imgs`: Directorio de imágenes y diagramas de arquitectura o de diseño del proyecto.
 * `tools`: Directorio asociado a paquetes de python desarrollados para cumplir con los requerimientos correspondientes.
 * `data`: Corresponde a la ruta donde se almacenan en formato comprimido algunos de los datos que han sido preparados previamente en el proceso de limpieza y estandarización de datos.
+* `models`: Directorio de modelos generados para cada uno de los experimentos
+* `models_cross`: Directorio asociado con los modelos generados por medio de validación cruzada.
+* `config`: Directorio con cada uno de los archivos de configuración definidos para usarse con el paquete de entrenamiento de modelos `tools.model_generation.*`
+
+### ¿Como se ejecuta el proceso?
+
+* Para realizar la ejecución de los notebooks se recomienda realizar previamente la instalación de las librerías requeridas y usando `Python 3.11`.
+* Para realizar la instalación de las librerías debemos:
+  * Crear un entorno virtual de python por medio de la librería `virtualenv`.
+
+    ```bash
+    python -v venv .venv
+    ```
+  * Habilitamos el entorno virtual
+    
+    **Linux**
+    ```bash
+    source .venv/bin/activate
+    ```
+    **Windows**
+    ```cmd
+    .venv\Scripts\activate.bat
+    ```
+  * Instalamos las librerías requeridas del archivo `requirements.txt` incluido en el directorio principal del repositorio.
+    ```bash
+    pip install -r requirements.txt
+    ```
+* La ejecución se realiza siguiendo el orden numérico de los cuadernos Jupyter relacionados en el directorio principal del repositorio, partiendo del **Análisis Exploratorio** (`1_Analisis_Exploratorio.ipynb`) hasta la generación de **Métricas** (`9_Metricas.ipynb`).
