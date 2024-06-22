@@ -1,0 +1,317 @@
+[
+  {
+    "model": {
+      "name": "ConvGRU_2_look96_overlap1",
+      "structure": [
+        {
+          "type": "input",
+          "shape": [
+            96,
+            11
+          ],
+          "name": "input_1"
+        },
+        {
+          "type": "conv1d",
+          "filters": 64,
+          "activation": "relu",
+          "kernel_size": 2
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "bidirectional": true,
+          "return_sequences": true
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "activation": "tanh",
+          "return_sequences": true
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "activation": "tanh",
+          "return_sequences": true
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "activation": "tanh"
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "dense",
+          "units": 48,
+          "name": "dense_out"
+        }
+      ],
+      "compile": {
+        "loss": "huber",
+        "optimizer": "adam",
+        "metrics": [
+          "mse",
+          "mae"
+        ]
+      },
+      "training": {
+        "columns_for_training": [
+          "GHI",
+          "wind_dir",
+          "humidity",
+          "precipitation",
+          "air_temp",
+          "wind_sp",
+          "sun_elev",
+          "sun_azim",
+          "total_minutes_day",
+          "day_of_year",
+          "attenuation_index"
+        ],
+        "test_size": 0.3,
+        "n_past_steps": 96,
+        "n_forecast_steps": 48,
+        "n_overlay_steps": 1,
+        "include_target_as_feature": true,
+        "early_stopping": true,
+        "early_stopping_params": {
+          "monitor": "val_loss",
+          "patience": 5,
+          "restore_best_weights": true
+        },
+        "epochs": 50,
+        "batch_size": 32
+      }
+    }
+  },
+  {
+    "model": {
+      "name": "ConvGRU_2_look96_overlap48",
+      "structure": [
+        {
+          "type": "input",
+          "shape": [
+            96,
+            11
+          ],
+          "name": "input_1"
+        },
+        {
+          "type": "conv1d",
+          "filters": 64,
+          "activation": "relu",
+          "kernel_size": 2
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "bidirectional": true,
+          "return_sequences": true
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "activation": "tanh",
+          "return_sequences": true
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "activation": "tanh",
+          "return_sequences": true
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "activation": "tanh"
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "dense",
+          "units": 48,
+          "name": "dense_out"
+        }
+      ],
+      "compile": {
+        "loss": "huber",
+        "optimizer": "adam",
+        "metrics": [
+          "mse",
+          "mae"
+        ]
+      },
+      "training": {
+        "columns_for_training": [
+          "GHI",
+          "wind_dir",
+          "humidity",
+          "precipitation",
+          "air_temp",
+          "wind_sp",
+          "sun_elev",
+          "sun_azim",
+          "total_minutes_day",
+          "day_of_year",
+          "attenuation_index"
+        ],
+        "test_size": 0.3,
+        "n_past_steps": 96,
+        "n_forecast_steps": 48,
+        "n_overlay_steps": 48,
+        "include_target_as_feature": true,
+        "early_stopping": true,
+        "early_stopping_params": {
+          "monitor": "val_loss",
+          "patience": 5,
+          "restore_best_weights": true
+        },
+        "epochs": 50,
+        "batch_size": 32
+      }
+    }
+  },
+  {
+    "model": {
+      "name": "ConvGRU_2_look96_overlap96",
+      "structure": [
+        {
+          "type": "input",
+          "shape": [
+            96,
+            11
+          ],
+          "name": "input_1"
+        },
+        {
+          "type": "conv1d",
+          "filters": 64,
+          "activation": "relu",
+          "kernel_size": 2
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "bidirectional": true,
+          "return_sequences": true
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "activation": "tanh",
+          "return_sequences": true
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "activation": "tanh",
+          "return_sequences": true
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "gru",
+          "units": 128,
+          "activation": "tanh"
+        },
+        {
+          "type": "dropout",
+          "rate": 0.2
+        },
+        {
+          "type": "dense",
+          "units": 48,
+          "name": "dense_out"
+        }
+      ],
+      "compile": {
+        "loss": "huber",
+        "optimizer": "adam",
+        "metrics": [
+          "mse",
+          "mae"
+        ]
+      },
+      "training": {
+        "columns_for_training": [
+          "GHI",
+          "wind_dir",
+          "humidity",
+          "precipitation",
+          "air_temp",
+          "wind_sp",
+          "sun_elev",
+          "sun_azim",
+          "total_minutes_day",
+          "day_of_year",
+          "attenuation_index"
+        ],
+        "test_size": 0.3,
+        "n_past_steps": 96,
+        "n_forecast_steps": 48,
+        "n_overlay_steps": 96,
+        "include_target_as_feature": true,
+        "early_stopping": true,
+        "early_stopping_params": {
+          "monitor": "val_loss",
+          "patience": 5,
+          "restore_best_weights": true
+        },
+        "epochs": 50,
+        "batch_size": 32
+      }
+    }
+  }
+]

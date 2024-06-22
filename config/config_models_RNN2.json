@@ -1,0 +1,272 @@
+[
+    {
+        "model": {
+            "name": "RNN_2_look48_overlap1",
+            "structure":[
+                {"type": "input", "shape": [48, 11]},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "dense", "units": 48}
+            ],
+            "compile": {"loss": "huber", "optimizer": "adam", "metrics": ["mse", "mae"]},
+            "training": {
+                "columns_for_training": ["GHI", "wind_dir", "humidity", "precipitation", "air_temp", "wind_sp", "sun_elev", "sun_azim", "total_minutes_day", "day_of_year", "attenuation_index"],
+                "test_size": 0.3,
+                "batch_size": 32,
+                "n_past_steps": 48,
+                "n_forecast_steps": 48,
+                "n_overlay_steps": 1,
+                "include_target_as_feature": true,
+                "early_stopping": true,
+                "early_stopping_params": {"monitor": "val_loss", "patience": 4},
+                "epochs": 50
+            }
+        }
+    },
+    {
+        "model": {
+            "name": "RNN_2_look72_overlap1",
+            "structure":[
+                {"type": "input", "shape": [72, 11]},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "dense", "units": 48}
+            ],
+            "compile": {"loss": "huber", "optimizer": "adam", "metrics": ["mse", "mae"]},
+            "training": {
+                "columns_for_training": ["GHI", "wind_dir", "humidity", "precipitation", "air_temp", "wind_sp", "sun_elev", "sun_azim", "total_minutes_day", "day_of_year", "attenuation_index"],
+                "test_size": 0.3,
+                "batch_size": 32,
+                "n_past_steps": 72,
+                "n_forecast_steps": 48,
+                "n_overlay_steps": 1,
+                "include_target_as_feature": true,
+                "early_stopping": true,
+                "early_stopping_params": {"monitor": "val_loss", "patience": 4},
+                "epochs": 50
+            }
+        }
+    },
+    {
+        "model": {
+            "name": "RNN_2_look96_overlap1",
+            "structure":[
+                {"type": "input", "shape": [96, 11]},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "dense", "units": 48}
+            ],
+            "compile": {"loss": "huber", "optimizer": "adam", "metrics": ["mse", "mae"]},
+            "training": {
+                "columns_for_training": ["GHI", "wind_dir", "humidity", "precipitation", "air_temp", "wind_sp", "sun_elev", "sun_azim", "total_minutes_day", "day_of_year", "attenuation_index"],
+                "test_size": 0.3,
+                "batch_size": 32,
+                "n_past_steps": 96,
+                "n_forecast_steps": 48,
+                "n_overlay_steps": 1,
+                "include_target_as_feature": true,
+                "early_stopping": true,
+                "early_stopping_params": {"monitor": "val_loss", "patience": 4},
+                "epochs": 50
+            }
+        }
+    },
+    {
+        "model": {
+            "name": "RNN_2_look48_overlap24",
+            "structure":[
+                {"type": "input", "shape": [48, 11]},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "dense", "units": 48}
+            ],
+            "compile": {"loss": "huber", "optimizer": "adam", "metrics": ["mse", "mae"]},
+            "training": {
+                "columns_for_training": ["GHI", "wind_dir", "humidity", "precipitation", "air_temp", "wind_sp", "sun_elev", "sun_azim", "total_minutes_day", "day_of_year", "attenuation_index"],
+                "test_size": 0.3,
+                "batch_size": 32,
+                "n_past_steps": 48,
+                "n_forecast_steps": 48,
+                "n_overlay_steps": 24,
+                "include_target_as_feature": true,
+                "early_stopping": true,
+                "early_stopping_params": {"monitor": "val_loss", "patience": 4},
+                "epochs": 50
+            }
+        }
+    },
+    {
+        "model": {
+            "name": "RNN_2_look72_overlap36",
+            "structure":[
+                {"type": "input", "shape": [72, 11]},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "dense", "units": 48}
+            ],
+            "compile": {"loss": "huber", "optimizer": "adam", "metrics": ["mse", "mae"]},
+            "training": {
+                "columns_for_training": ["GHI", "wind_dir", "humidity", "precipitation", "air_temp", "wind_sp", "sun_elev", "sun_azim", "total_minutes_day", "day_of_year", "attenuation_index"],
+                "test_size": 0.3,
+                "batch_size": 32,
+                "n_past_steps": 72,
+                "n_forecast_steps": 48,
+                "n_overlay_steps": 36,
+                "include_target_as_feature": true,
+                "early_stopping": true,
+                "early_stopping_params": {"monitor": "val_loss", "patience": 4},
+                "epochs": 50
+            }
+        }
+    },
+    {
+        "model": {
+            "name": "RNN_2_look96_overlap48",
+            "structure":[
+                {"type": "input", "shape": [96, 11]},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "dense", "units": 48}
+            ],
+            "compile": {"loss": "huber", "optimizer": "adam", "metrics": ["mse", "mae"]},
+            "training": {
+                "columns_for_training": ["GHI", "wind_dir", "humidity", "precipitation", "air_temp", "wind_sp", "sun_elev", "sun_azim", "total_minutes_day", "day_of_year", "attenuation_index"],
+                "test_size": 0.3,
+                "batch_size": 32,
+                "n_past_steps": 96,
+                "n_forecast_steps": 48,
+                "n_overlay_steps": 48,
+                "include_target_as_feature": true,
+                "early_stopping": true,
+                "early_stopping_params": {"monitor": "val_loss", "patience": 4},
+                "epochs": 50
+            }
+        }
+    },
+    {
+        "model": {
+            "name": "RNN_2_look48_overlap48",
+            "structure":[
+                {"type": "input", "shape": [48, 11]},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "dense", "units": 48}
+            ],
+            "compile": {"loss": "huber", "optimizer": "adam", "metrics": ["mse", "mae"]},
+            "training": {
+                "columns_for_training": ["GHI", "wind_dir", "humidity", "precipitation", "air_temp", "wind_sp", "sun_elev", "sun_azim", "total_minutes_day", "day_of_year", "attenuation_index"],
+                "test_size": 0.3,
+                "batch_size": 32,
+                "n_past_steps": 48,
+                "n_forecast_steps": 48,
+                "n_overlay_steps": 48,
+                "include_target_as_feature": true,
+                "early_stopping": true,
+                "early_stopping_params": {"monitor": "val_loss", "patience": 4},
+                "epochs": 50
+            }
+        }
+    },
+    {
+        "model": {
+            "name": "RNN_2_look72_overlap72",
+            "structure":[
+                {"type": "input", "shape": [72, 11]},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "dense", "units": 48}
+            ],
+            "compile": {"loss": "huber", "optimizer": "adam", "metrics": ["mse", "mae"]},
+            "training": {
+                "columns_for_training": ["GHI", "wind_dir", "humidity", "precipitation", "air_temp", "wind_sp", "sun_elev", "sun_azim", "total_minutes_day", "day_of_year", "attenuation_index"],
+                "test_size": 0.3,
+                "batch_size": 32,
+                "n_past_steps": 72,
+                "n_forecast_steps": 48,
+                "n_overlay_steps": 72,
+                "include_target_as_feature": true,
+                "early_stopping": true,
+                "early_stopping_params": {"monitor": "val_loss", "patience": 4},
+                "epochs": 50
+            }
+        }
+    },
+    {
+        "model": {
+            "name": "RNN_2_look96_overlap96",
+            "structure":[
+                {"type": "input", "shape": [96, 11]},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "return_sequences":true, "bidirectional":true, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "simple_rnn", "units": 128, "activation": "tanh"},
+                {"type": "dropout", "rate": 0.2},
+                {"type": "dense", "units": 48}
+            ],
+            "compile": {"loss": "huber", "optimizer": "adam", "metrics": ["mse", "mae"]},
+            "training": {
+                "columns_for_training": ["GHI", "wind_dir", "humidity", "precipitation", "air_temp", "wind_sp", "sun_elev", "sun_azim", "total_minutes_day", "day_of_year", "attenuation_index"],
+                "test_size": 0.3,
+                "batch_size": 32,
+                "n_past_steps": 96,
+                "n_forecast_steps": 48,
+                "n_overlay_steps": 96,
+                "include_target_as_feature": true,
+                "early_stopping": true,
+                "early_stopping_params": {"monitor": "val_loss", "patience": 4},
+                "epochs": 50
+            }
+        }
+    }
+]
